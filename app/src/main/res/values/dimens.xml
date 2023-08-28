@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="small_margin">4dp</dimen>
+    <dimen name="medium_margin">12dp</dimen>
+    <dimen name="large_margin">24dp</dimen>
+    <dimen name="very_large_margin">48dp</dimen>
+
+    <dimen name="small_text">12sp</dimen>
+    <dimen name="semi_medium_text">16sp</dimen>
+    <dimen name="medium_text">18sp</dimen>
+    <dimen name="semi_large_text">22sp</dimen>
+    <dimen name="large_text">28sp</dimen>
+    <dimen name="very_large_text">40sp</dimen>
+
+    <dimen name="one">1dp</dimen>
+    <dimen name="zero">0dp</dimen>
+</resources>

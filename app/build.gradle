@@ -1,0 +1,115 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    namespace 'yassir.moviesapp'
+    compileSdk rootProject.compileSdk
+
+    defaultConfig {
+        applicationId "yassir.moviesapp"
+        minSdk rootProject.minSdk
+        targetSdk rootProject.targetSdk
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+        }
+
+        release {
+            minifyEnabled true
+            debuggable false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        coreLibraryDesugaringEnabled true
+
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+ext {
+    // App dependencies (A-Z)
+    androidX = '1.0.0'
+    androidXAnnotations = '1.6.0'
+    androidXLegacySupport = '1.0.0'
+    appCompat = '1.6.1'
+    archLifecycle = '2.6.1'
+    desugaring = '1.1.5'
+    constraintLayout = '2.1.4'
+    espresso = '3.5.1'
+    fragmentKtx = '1.6.1'
+    glide = '4.12.0'
+    junit = '4.13.2'
+    junitAndroid = '1.1.5'
+    kotlin = '1.10.1'
+    material = '1.9.0'
+    okHttp = '5.0.0-alpha.6'
+    recyclerView = '1.3.1'
+    retrofit = '2.9.0'
+    timber = '5.0.1'
+}
+
+dependencies {
+
+    implementation "androidx.core:core-ktx:$kotlin"
+    implementation "androidx.appcompat:appcompat:$appCompat"
+    implementation "com.google.android.material:material:$material"
+    testImplementation "junit:junit:$junit"
+    androidTestImplementation "androidx.test.ext:junit:$junitAndroid"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso"
+
+    // Architecture Components
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$archLifecycle"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$archLifecycle"
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigation"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigation"
+    implementation "androidx.fragment:fragment-ktx:$fragmentKtx"
+
+    // UI dependencies
+    implementation "androidx.appcompat:appcompat:$appCompat"
+    implementation "com.google.android.material:material:$material"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintLayout"
+    implementation "androidx.recyclerview:recyclerview:$recyclerView"
+    implementation "androidx.annotation:annotation:$androidXAnnotations"
+    implementation "androidx.legacy:legacy-support-v4:$androidXLegacySupport"
+
+    // Logging
+    implementation "com.jakewharton.timber:timber:$timber"
+
+    // Hilt
+    implementation "com.google.dagger:hilt-android:$hiltVersion"
+    kapt "com.google.dagger:hilt-compiler:$hiltVersion"
+
+    // Glide
+    implementation "com.github.bumptech.glide:glide:$glide"
+
+    // Retrofit & OkHttp
+    implementation "com.squareup.okhttp3:okhttp:$okHttp"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okHttp"
+    implementation "com.squareup.retrofit2:retrofit:$retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit"
+
+    // Java Desugaring
+    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:$desugaring"
+}
