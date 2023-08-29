@@ -4,7 +4,8 @@
     <!--  Errors  -->
     <string name="err_operational_msg">An error has occurred while performing the operation</string>
     <string name="err_connection">Something is wrong with your connection!</string>
-    <string name="err_empty">It seems there\'s nothing to show</string>
+    <string name="err_title_common">Oops…</string>
+    <string name="err_title_empty">Nothing to display!</string>
 
     <!--  Common  -->
     <string name="retry">Retry</string>

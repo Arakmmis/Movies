@@ -56,9 +56,10 @@ ext {
     androidXLegacySupport = '1.0.0'
     appCompat = '1.6.1'
     archLifecycle = '2.6.1'
-    desugaring = '1.1.5'
+    cardVersion = '1.0.0'
     constraintLayout = '2.1.4'
     coroutinesTest = '1.5.2'
+    desugaring = '1.1.5'
     espresso = '3.5.1'
     fragmentKtx = '1.6.1'
     glide = '4.12.0'
@@ -93,6 +94,7 @@ dependencies {
 
     // UI dependencies
     implementation "androidx.appcompat:appcompat:$appCompat"
+    implementation "androidx.cardview:cardview:$cardVersion"
     implementation "com.google.android.material:material:$material"
     implementation "androidx.constraintlayout:constraintlayout:$constraintLayout"
     implementation "androidx.recyclerview:recyclerview:$recyclerView"

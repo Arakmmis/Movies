@@ -1,6 +1,5 @@
 package yassir.moviesapp.domain.pagination
 
-import androidx.lifecycle.LiveData
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import kotlinx.coroutines.CoroutineExceptionHandler
@@ -21,7 +20,8 @@ class MovieDataSource @Inject constructor(
     private val getMoviesListUseCase: GetMoviesListUseCase
 ) : PagingSource<Int, MoviesPage.Movie>() {
 
-    private var state: SingleLiveEvent<PaginationState> = SingleLiveEvent()
+    var state: SingleLiveEvent<PaginationState> = SingleLiveEvent()
+
     private var job = SupervisorJob()
     private val io: CoroutineContext = Dispatchers.IO
     private val scope = CoroutineScope(getJobErrorHandler() + io + job)
@@ -40,9 +40,15 @@ class MovieDataSource @Inject constructor(
         updateState(PaginationState.LOADING)
 
         val page = params.key ?: 1
+        val results: List<MoviesPage.Movie>
 
-        val results = getMoviesListUseCase.execute(page, queryParams)
-        retryQuery = null
+        try {
+            results = getMoviesListUseCase.execute(page, queryParams)
+            retryQuery = null
+        } catch (e: Exception) {
+            updateState(PaginationState.ERROR)
+            return LoadResult.Error(e)
+        }
 
         if (results.isNotEmpty()) {
             updateState(PaginationState.DONE)
@@ -73,8 +79,6 @@ class MovieDataSource @Inject constructor(
         job.cancelChildren()
         invalidate()
     }
-
-    fun getPaginationState(): LiveData<PaginationState> = state
 
     fun retryFailedQuery() {
         val prevQuery = retryQuery

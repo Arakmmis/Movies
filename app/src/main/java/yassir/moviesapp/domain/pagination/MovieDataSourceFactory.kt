@@ -1,15 +1,18 @@
 package yassir.moviesapp.domain.pagination
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.switchMap
 import yassir.moviesapp.domain.usecases.GetMoviesListUseCase
 import javax.inject.Inject
 
 class MovieDataSourceFactory @Inject constructor(
-    private var queryParams: HashMap<String, String>,
-    private val getMoviesListUseCase: GetMoviesListUseCase
+    private var queryParams: HashMap<String, String>
 ) {
 
-    val movieDataSourceLiveData = MutableLiveData<MovieDataSource>()
+    private val movieDataSourceLiveData = MutableLiveData<MovieDataSource>()
+
+    @Inject
+    lateinit var getMoviesListUseCase: GetMoviesListUseCase
 
     fun build(): MovieDataSource {
         val movieDataSource = MovieDataSource(queryParams, getMoviesListUseCase)
@@ -20,7 +23,9 @@ class MovieDataSourceFactory @Inject constructor(
 
     fun getSource() = movieDataSourceLiveData.value
 
-    fun getPaginationState() = movieDataSourceLiveData.value?.getPaginationState()
+    fun getPaginationState() = movieDataSourceLiveData.switchMap {
+        it.state
+    }
 
     fun getLastQueryParams() = queryParams
 
