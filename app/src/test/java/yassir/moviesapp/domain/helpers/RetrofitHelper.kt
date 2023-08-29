@@ -3,7 +3,7 @@ package yassir.moviesapp.domain.helpers
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import yassir.moviesapp.domain.Api
+import yassir.moviesapp.domain.api.Api
 
 object RetrofitHelper {
 

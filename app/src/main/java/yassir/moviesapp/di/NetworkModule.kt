@@ -9,8 +9,8 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import yassir.moviesapp.BuildConfig
-import yassir.moviesapp.domain.Api
-import yassir.moviesapp.domain.ApiConfig
+import yassir.moviesapp.domain.api.Api
+import yassir.moviesapp.domain.api.ApiConfig
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 

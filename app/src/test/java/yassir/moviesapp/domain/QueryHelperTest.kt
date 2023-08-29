@@ -1,4 +1,4 @@
-package yassir.moviesapp.util
+package yassir.moviesapp.domain
 
 import org.junit.Test
 

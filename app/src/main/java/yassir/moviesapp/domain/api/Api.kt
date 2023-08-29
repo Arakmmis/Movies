@@ -1,4 +1,4 @@
-package yassir.moviesapp.domain
+package yassir.moviesapp.domain.api
 
 import retrofit2.Response
 import retrofit2.http.GET

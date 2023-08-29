@@ -1,4 +1,4 @@
-package yassir.moviesapp.domain
+package yassir.moviesapp.domain.api
 
 object ApiConfig {
 

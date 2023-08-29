@@ -3,6 +3,7 @@ package yassir.moviesapp.domain
 import yassir.moviesapp.data.helpers.ResWrapper
 import yassir.moviesapp.data.pojos.MovieDetails
 import yassir.moviesapp.data.pojos.MoviesPage
+import yassir.moviesapp.domain.api.Api
 import javax.inject.Inject
 
 class MovieRepositoryImpl @Inject constructor(private val api: Api) : MovieRepository {

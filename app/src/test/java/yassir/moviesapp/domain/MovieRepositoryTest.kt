@@ -11,9 +11,9 @@ import org.junit.Before
 import org.junit.Test
 import retrofit2.HttpException
 import yassir.moviesapp.data.helpers.ResWrapper
+import yassir.moviesapp.domain.api.Api
 import yassir.moviesapp.domain.helpers.MoviesHelper
 import yassir.moviesapp.domain.helpers.RetrofitHelper
-import yassir.moviesapp.util.QueryHelper
 import java.net.HttpURLConnection
 
 @OptIn(ExperimentalCoroutinesApi::class)
