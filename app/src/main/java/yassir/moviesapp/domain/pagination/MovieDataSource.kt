@@ -9,18 +9,16 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancelChildren
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import timber.log.Timber
 import yassir.moviesapp.data.pojos.MoviesPage
-import yassir.moviesapp.domain.MovieRepository
-import yassir.moviesapp.domain.QueryHelper.Companion.KEY_PAGE
+import yassir.moviesapp.domain.usecases.GetMoviesListUseCase
 import yassir.moviesapp.util.SingleLiveEvent
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
 class MovieDataSource @Inject constructor(
     private val queryParams: HashMap<String, String>,
-    private val repository: MovieRepository
+    private val getMoviesListUseCase: GetMoviesListUseCase
 ) : PagingSource<Int, MoviesPage.Movie>() {
 
     private var state: SingleLiveEvent<PaginationState> = SingleLiveEvent()
@@ -39,9 +37,17 @@ class MovieDataSource @Inject constructor(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, MoviesPage.Movie> {
         retryQuery = { load(params) }
 
+        updateState(PaginationState.LOADING)
+
         val page = params.key ?: 1
 
-        val results = executeQuery(page)
+        val results = getMoviesListUseCase.execute(page, queryParams)
+        retryQuery = null
+
+        if (results.isNotEmpty()) {
+            updateState(PaginationState.DONE)
+        } else
+            updateState(PaginationState.EMPTY)
 
         return try {
             LoadResult.Page(
@@ -52,28 +58,6 @@ class MovieDataSource @Inject constructor(
         } catch (e: Exception) {
             LoadResult.Error(e)
         }
-    }
-
-    private suspend fun executeQuery(page: Int): List<MoviesPage.Movie> {
-        updateState(PaginationState.LOADING)
-
-        var results: List<MoviesPage.Movie>?
-
-        runBlocking {
-            queryParams[KEY_PAGE] = page.toString()
-
-            val response = repository.getMovies(queryParams).data
-            retryQuery = null
-
-            if (response?.results != null && response.results.isNotEmpty()) {
-                updateState(PaginationState.DONE)
-            } else
-                updateState(PaginationState.EMPTY)
-
-            results = response?.results
-        }
-
-        return results ?: listOf()
     }
 
     private fun getJobErrorHandler() = CoroutineExceptionHandler { _, e ->
