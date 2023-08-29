@@ -1,6 +1,7 @@
-package yassir.moviesapp.domain.movies_repo
+package yassir.moviesapp.domain
 
 import com.google.common.truth.Truth.assertThat
+import com.google.gson.Gson
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import okhttp3.mockwebserver.MockResponse
@@ -8,10 +9,6 @@ import okhttp3.mockwebserver.MockWebServer
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
-import yassir.moviesapp.domain.Api
-import yassir.moviesapp.domain.MovieRepository
-import yassir.moviesapp.domain.MovieRepositoryImpl
-import yassir.moviesapp.domain.helpers.GsonHelper
 import yassir.moviesapp.domain.helpers.MoviesHelper
 import yassir.moviesapp.domain.helpers.RetrofitHelper
 import yassir.moviesapp.util.QueryHelper
@@ -43,7 +40,7 @@ class MovieRepositoryTest {
 
         val expectedResponse = MockResponse()
             .setResponseCode(HttpURLConnection.HTTP_OK)
-            .setBody(GsonHelper.moviesPageToJson(movies))
+            .setBody(Gson().toJson(movies))
 
         mockWebServer.enqueue(expectedResponse)
 
@@ -51,5 +48,20 @@ class MovieRepositoryTest {
 
         assertThat(actualResponse.data?.results).hasSize(2)
         assertThat(actualResponse.data).isEqualTo(movies)
+    }
+
+    @Test
+    fun `on call get movie details, returns movie`() = runTest {
+        val movie = MoviesHelper.getMovieDetails()
+
+        val expectedResponse = MockResponse()
+            .setResponseCode(HttpURLConnection.HTTP_OK)
+            .setBody(Gson().toJson(movie))
+
+        mockWebServer.enqueue(expectedResponse)
+
+        val actualResponse = repository.getMovieDetails(1, "query")
+
+        assertThat(actualResponse.data).isEqualTo(movie)
     }
 }

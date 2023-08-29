@@ -1,5 +1,6 @@
 package yassir.moviesapp.domain.helpers
 
+import yassir.moviesapp.data.pojos.MovieDetails
 import yassir.moviesapp.data.pojos.MoviesPage
 import kotlin.random.Random
 import kotlin.random.nextInt
@@ -27,6 +28,19 @@ object MoviesHelper {
             title = title,
             releaseDate = Random.nextInt(2000..2023).toString(),
             genres = genres
+        )
+    }
+
+    fun getMovieDetails(): MovieDetails {
+        val title = getName()
+        val posterPath = getPosterPath()
+
+        return MovieDetails(
+            id = Random.nextInt(),
+            posterPath = posterPath,
+            backdropPath = posterPath,
+            title = title,
+            releaseDate = Random.nextInt(2000..2023).toString()
         )
     }
 
