@@ -8,6 +8,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import yassir.moviesapp.BuildConfig
 import yassir.moviesapp.domain.Api
 import yassir.moviesapp.domain.ApiConfig
 import java.util.concurrent.TimeUnit
@@ -23,10 +24,10 @@ object NetworkModule {
     @Singleton
     fun provideLoggingInterceptor(): HttpLoggingInterceptor =
         HttpLoggingInterceptor().setLevel(
-//            if (BuildConfig.DEBUG)
+            if (BuildConfig.DEBUG)
                 HttpLoggingInterceptor.Level.BODY
-//            else
-//                HttpLoggingInterceptor.Level.NONE
+            else
+                HttpLoggingInterceptor.Level.NONE
         )
 
     @Provides

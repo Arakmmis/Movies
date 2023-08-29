@@ -15,6 +15,14 @@ object MoviesHelper {
             results = listOf(getMovie(), getMovie())
         )
 
+    fun `get one page of no movies`(): MoviesPage =
+        MoviesPage(
+            page = 1,
+            totalPages = 1,
+            totalResults = 0,
+            results = listOf()
+        )
+
     private fun getMovie(): MoviesPage.Movie {
         val title = getName()
         val posterPath = getPosterPath()
