@@ -14,7 +14,7 @@ data class MovieDetails(
     @SerializedName("overview")
     val overview: String? = "",
     @SerializedName("genres")
-    val genres: List<GenresList.Genre>? = listOf(),
+    val genres: List<Genre>? = listOf(),
     @SerializedName("credits")
     val credits: Credits? = null,
     @SerializedName("popularity")
@@ -35,5 +35,10 @@ data class MovieDetails(
         @SerializedName("id") val id: Int? = -1,
         @SerializedName("name") val name: String? = "",
         @SerializedName("profile_path") val profilePath: String? = ""
+    )
+
+    data class Genre(
+        @SerializedName("id") val id: Int? = -1,
+        @SerializedName("name") val name: String? = ""
     )
 }
