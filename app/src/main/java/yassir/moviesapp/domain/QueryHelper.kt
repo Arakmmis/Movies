@@ -7,6 +7,7 @@ class QueryHelper {
         private const val KEY_SORT_BY = "sort_by"
         private const val KEY_INCLUDE_VIDEO = "include_video"
         private const val KEY_INCLUDE_ADULT = "include_adult"
+        const val KEY_PAGE = "page"
 
         private const val VALUE_SORT_BY = "popularity.desc"
         private const val VALUE_INCLUDE_VIDEO = "false"
