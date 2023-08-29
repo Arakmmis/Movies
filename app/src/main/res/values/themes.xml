@@ -1,44 +1,10 @@
 <resources>
-
-    <style name="Theme.MoviesApp" parent="Theme.AppCompat.NoActionBar">
-        <item name="colorPrimary">@color/shark</item>
-        <item name="colorPrimaryDark">@color/shark</item>
-        <item name="colorAccent">@color/alpha_aa_white</item>
-        <item name="android:statusBarColor">@color/shark</item>
+    <style name="Theme.MoviesApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorOnPrimary">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/windowBackground</item>
+        <item name="android:statusBarColor">@color/windowBackground</item>
     </style>
-
-    <style name="Theme.Splash" parent="Theme.AppCompat.NoActionBar" />
-
-    <style name="MarginDefault">
-        <item name="android:layout_marginTop">@dimen/large_margin</item>
-        <item name="android:layout_marginEnd">@dimen/medium_margin</item>
-        <item name="android:layout_marginStart">@dimen/medium_margin</item>
-    </style>
-
-    <style name="HeaderTextStyle" parent="MarginDefault">
-        <item name="android:textAlignment">viewStart</item>
-        <item name="android:textSize">@dimen/very_large_text</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="SubHeaderTextStyle" parent="MarginDefault">
-        <item name="android:textAlignment">viewStart</item>
-        <item name="android:textSize">@dimen/large_text</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textStyle">normal</item>
-    </style>
-
-    <style name="ParagraphTextStyle" parent="MarginDefault">
-        <item name="android:textAlignment">viewStart</item>
-        <item name="android:textSize">@dimen/medium_text</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textStyle">normal</item>
-    </style>
-
-    <style name="RoundedMoviePoster">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">3%</item>
-    </style>
-
 </resources>

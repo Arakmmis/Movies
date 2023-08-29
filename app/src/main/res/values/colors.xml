@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="white">#FFF</color>
-    <color name="alpha_aa_white">#AAFFFFFF</color>
+    <color name="colorPrimary">#191919</color>
+    <color name="colorPrimaryDark">#111111</color>
+    <color name="colorAccent">#03DAC5</color>
 
-    <color name="dim_grey">#696969</color>
-    <color name="alpha_44_dim_grey">#44696969</color>
+    <color name="windowBackground">#191919</color>
 
-    <color name="alpha_44_black">#44000000</color>
-    <color name="shark">#1D1E27</color>
-    <color name="black">#000</color>
+    <color name="white_100">#ffffff</color>
+    <color name="white_80">#CCFFFFFF</color>
+    <color name="white_70">#b3ffffff</color>
+    <color name="white_40">#66FFFFFF</color>
 
-    <color name="carnation">#F95762</color>
-    <color name="aqua_forest">#65AB74</color>
+    <color name="black_100">#000000</color>
+    <color name="black_60">#99000000</color>
+    <color name="black_40">#66000000</color>
 
-    <color name="green_smoke">#99AF67</color>
-    <color name="jacarta">#322C6C</color>
-    <color name="blue_marguerite">#6866CC</color>
-    <color name="heath">#541017</color>
-    <color name="brandy">#DFBFA0</color>
+    <color name="grey_757575">#757575</color>
+
+    <color name="blue_whale_66">#66111111</color>
+
 </resources>
