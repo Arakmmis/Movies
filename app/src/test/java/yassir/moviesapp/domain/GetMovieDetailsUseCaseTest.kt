@@ -56,7 +56,7 @@ class GetMovieDetailsUseCaseTest {
     }
 
     @Test
-    fun `for movie id not available, return with http code 404 and null movie object`() =
+    fun `for movie id not available, return null movie object`() =
         runTest {
             val expectedResponse = MockResponse()
                 .setResponseCode(HttpURLConnection.HTTP_NOT_FOUND)

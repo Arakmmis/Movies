@@ -6,13 +6,11 @@ import yassir.moviesapp.domain.usecases.GetMoviesListUseCase
 import javax.inject.Inject
 
 class MovieDataSourceFactory @Inject constructor(
-    private var queryParams: HashMap<String, String>
+    private var queryParams: HashMap<String, String>,
+    private val getMoviesListUseCase: GetMoviesListUseCase
 ) {
 
     private val movieDataSourceLiveData = MutableLiveData<MovieDataSource>()
-
-    @Inject
-    lateinit var getMoviesListUseCase: GetMoviesListUseCase
 
     fun build(): MovieDataSource {
         val movieDataSource = MovieDataSource(queryParams, getMoviesListUseCase)

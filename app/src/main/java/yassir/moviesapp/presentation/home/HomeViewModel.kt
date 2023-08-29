@@ -12,13 +12,17 @@ import yassir.moviesapp.domain.QueryHelper
 import yassir.moviesapp.domain.api.ApiConfig
 import yassir.moviesapp.domain.pagination.MovieDataSourceFactory
 import yassir.moviesapp.domain.pagination.PaginationState
+import yassir.moviesapp.domain.usecases.GetMoviesListUseCase
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor() : ViewModel() {
+class HomeViewModel @Inject constructor(
+    getMoviesListUseCase: GetMoviesListUseCase
+) : ViewModel() {
 
     private var moviesDataSourceFactory = MovieDataSourceFactory(
-        QueryHelper.trendingMoviesParams()
+        QueryHelper.trendingMoviesParams(),
+        getMoviesListUseCase
     )
 
     val moviesPagedLiveData = Pager(

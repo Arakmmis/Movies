@@ -18,4 +18,9 @@
     <!--  Home Screen  -->
     <string name="title_home">Trending Movies</string>
 
+    <!--  Movie Details Screen  -->
+    <string name="title_movie_details">Movie Details</string>
+    <string name="title_actor">Actors</string>
+    <string name="title_desc">Description</string>
+
 </resources>
