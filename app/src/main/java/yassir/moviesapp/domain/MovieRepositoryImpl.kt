@@ -1,0 +1,12 @@
+package yassir.moviesapp.domain
+
+import yassir.moviesapp.data.helpers.ResWrapper
+import yassir.moviesapp.data.pojos.MoviesPage
+import yassir.moviesapp.util.wrap
+import javax.inject.Inject
+
+class MovieRepositoryImpl @Inject constructor(private val api: Api) : MovieRepository {
+
+    override suspend fun getMovies(query: Map<String, String>): ResWrapper<MoviesPage?> =
+        api.getMovies(query).wrap()
+}

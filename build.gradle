@@ -3,7 +3,7 @@ buildscript {
 
     ext {
         navigation = '2.7.1'
-        hiltVersion = '2.44'
+        hiltVersion = '2.47'
         minSdk = 26
         targetSdk = 34
         compileSdk = 34

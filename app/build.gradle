@@ -45,6 +45,7 @@ android {
 
     buildFeatures {
         viewBinding true
+        buildConfig = true
     }
 }
 
@@ -57,6 +58,7 @@ ext {
     archLifecycle = '2.6.1'
     desugaring = '1.1.5'
     constraintLayout = '2.1.4'
+    coroutinesTest = '1.5.2'
     espresso = '3.5.1'
     fragmentKtx = '1.6.1'
     glide = '4.12.0'
@@ -68,6 +70,7 @@ ext {
     recyclerView = '1.3.1'
     retrofit = '2.9.0'
     timber = '5.0.1'
+    truth = '1.1.3'
 }
 
 dependencies {
@@ -76,6 +79,7 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$appCompat"
     implementation "com.google.android.material:material:$material"
     testImplementation "junit:junit:$junit"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesTest"
     androidTestImplementation "androidx.test.ext:junit:$junitAndroid"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso"
 
@@ -109,7 +113,16 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$okHttp"
     implementation "com.squareup.retrofit2:retrofit:$retrofit"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit"
+    testImplementation "com.squareup.okhttp3:mockwebserver:$okHttp"
+
+    // Google truth for assertion
+    testImplementation "com.google.truth:truth:$truth"
 
     // Java Desugaring
     coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:$desugaring"
+}
+
+// Allow references to generated code
+kapt {
+    correctErrorTypes true
 }
